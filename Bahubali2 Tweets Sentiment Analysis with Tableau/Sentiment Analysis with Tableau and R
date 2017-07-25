@@ -1,0 +1,39 @@
+library("twitteR")
+library("NLP")
+library("textcat")
+library("plyr")
+library("syuzhet")
+library("tm")
+library("qdap")
+library("qdapRegex")
+
+cleaned_BB2 <- rm_hash(BB2Data$Status.Text..Twitter.Search...Bahubali2.)
+
+cleaned_BB2 <- as.matrix(cleaned_BB2)
+
+cleaned_BB2 <- rm_tag(cleaned_BB2)
+
+cleaned_BB2 <- as.matrix(cleaned_BB2)
+
+cleaned_BB2 <- rm_url(cleaned_BB2)
+
+cleaned_BB2 <- as.matrix(cleaned_BB2)
+
+
+BB2_Score <- get_sentiment(cleaned_BB2)
+
+BB2_Sentiment <- data.frame(cleaned_BB2,BB2_Score)
+BB2_Sentiment$BB2_Score
+
+
+
+
+BB2_Pos <- subset(BB2_Sentiment,BB2_Sentiment$BB2_Score>0)
+BB2_Pos$BB2_Score
+BB2_Pos$cleaned_BB2
+BB2_Neg <- subset(BB2_Sentiment,BB2_Sentiment$BB2_Score<0)
+BB2_Neg$BB2_Score
+BB2_Neg$cleaned_BB2
+BB2_Nutr<- subset(BB2_Sentiment,BB2_Sentiment$BB2_Score==0)
+BB2_Nutr$BB2_Score
+BB2_Nutr$cleaned_BB2
