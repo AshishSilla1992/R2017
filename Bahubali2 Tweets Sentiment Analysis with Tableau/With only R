@@ -1,0 +1,76 @@
+ibrary("reader")
+??twListToDF
+
+??ex_hash
+
+BB2Data <- read.csv(file.choose())
+
+
+class(BB2Data)
+
+
+head(BB2Data)
+View(BB2Data)
+
+twsources<- BB2Data$Source..Twitter.Search...Bahubali2.
+head(twsources)
+class(twsources)
+levels(twsources)
+sourcetable = table(twsources)
+
+??strip_retweets
+?tm_map
+
+TempText <- as.list(BB2Data$Status.Text..Twitter.Search...Bahubali2.)
+class(TempText)
+TempText <- strip_retweets("TempText")
+head(TempText)
+
+
+TempText<- tm_map("TempText", strip_retweets, lazy=TRUE)
+
+
+BB2Hash <- ex_hash(BB2Data$Status.Text..Twitter.Search...Bahubali2.)
+head(cleaned_BB2)
+
+
+
+cleaned_BB2 <- rm_hash(BB2Data$Status.Text..Twitter.Search...Bahubali2.)
+class(cleaned_BB2)
+
+cleaned_BB2 <- as.matrix(cleaned_BB2)
+
+cleaned_BB2 <- rm_tag(cleaned_BB2)
+
+cleaned_BB2 <- rm_url(cleaned_BB2)
+
+BB2_Score <- get_sentiment(cleaned_BB2_New)
+summary(BB2_Sentiment)
+BB2_Sentiment <- data.frame(cleaned_BB2_New,BB2_Score)
+View(BB2_Sentiment)
+textcat(cleaned_BB2)
+
+cleaned_BB2_New <- cleaned_BB2 [(textcat(cleaned_BB2)== "english"),]
+
+class(cleaned_BB2_New)
+cleaned_BB2_New <- as.matrix(cleaned_BB2_New)
+head(cleaned_BB2_New)
+
+BB2_Score[10]
+
+Pos_score <- BB2_Score[BB2_Score>0]
+
+str(BB2_Sentiment)
+
+str(BB2_Sentiment)
+BB2_Sentiment[,1]
+
+BB2_Pos <- subset(BB2_Sentiment,BB2_Sentiment$BB2_Score>0)
+BB2_Pos$BB2_Score
+BB2_Pos$cleaned_BB2_New
+BB2_Neg <- subset(BB2_Sentiment,BB2_Sentiment$BB2_Score<0)
+
+BB2_Nutr<- subset(BB2_Sentiment,BB2_Sentiment$BB2_Score==0)
+
+class(BB2_Neg)
+
